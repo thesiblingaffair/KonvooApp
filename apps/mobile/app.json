@@ -1,0 +1,71 @@
+{
+  "expo": {
+    "name": "Konvoo",
+    "slug": "konvoo",
+    "version": "1.2.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "konvoo",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFF3ED"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.konvoo.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFF3ED"
+      },
+      "package": "com.konvoo.app",
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 5,
+      "softwareKeyboardLayoutMode": "resize",
+      "permissions": [
+        "INTERNET",
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED",
+        "RECORD_AUDIO"
+      ],
+      "blockedPermissions": [
+        "android.permission.READ_PHONE_STATE"
+      ]
+    },
+    "plugins": [
+      [
+        "onesignal-expo-plugin",
+        {
+          "mode": "production",
+          "devTeam": "KONVOO"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "targetSdkVersion": 35,
+            "compileSdkVersion": 35,
+            "useLegacyPackaging": false,
+            "blockedPermissions": ["android.permission.READ_PHONE_STATE"]
+          }
+        }
+      ],
+      "./plugins/withAdiRegistration.js",
+      "./plugins/with16KBPages.js"
+    ],
+    "extra": {
+      "apiUrl": "https://yaari-api.onrender.com/api/v1",
+      "eas": {
+        "projectId": "23349e02-e6b6-4283-a5b7-04f39f3d40cf"
+      }
+    },
+    "owner": "konvoo"
+  }
+}

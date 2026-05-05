@@ -1,0 +1,1 @@
+ALTER TABLE "conversations" ALTER COLUMN "memory" SET DEFAULT '{"summary":"","keyFacts":[],"emotionalState":"neutral","lastUpdated":"2026-03-22T15:32:35.132Z"}'::jsonb;

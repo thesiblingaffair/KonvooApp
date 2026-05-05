@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /home
+Disallow: /pay
+Disallow: /delete-account
+Disallow: /chat
+Disallow: /profile
+Disallow: /login
+Disallow: /verify
+Disallow: /otp
+Disallow: /onboarding
+Disallow: /language
+Disallow: /subscriptions
+Disallow: /api/
+
+Sitemap: https://konvoo.live/sitemap.xml

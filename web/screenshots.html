@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konvoo Play Store Screenshots</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; font-family: 'DM Sans', sans-serif; display: flex; flex-wrap: wrap; gap: 24px; padding: 24px; justify-content: center; }
+  h2.label { width: 100%; color: #fff; font-family: 'Outfit', sans-serif; text-align: center; font-size: 14px; opacity: 0.5; margin-top: 12px; }
+
+  .screenshot {
+    width: 360px;
+    height: 640px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* ─── SCREENSHOT 1: HERO ─── */
+  .ss1 {
+    background: linear-gradient(170deg, #E8652B 0%, #D4501A 40%, #1A1A2E 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 28px 48px;
+    text-align: center;
+  }
+  .ss1 .kavya-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.2);
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .ss1 .kavya-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .ss1 .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .ss1 h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .ss1 h1 em { font-style: normal; color: #FFD4B8; }
+  .ss1 p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+    max-width: 280px;
+  }
+  .ss1 .logo-top {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .ss1 .logo-top span { opacity: 0.7; }
+  .ss1 .flag {
+    position: absolute;
+    top: 22px;
+    right: 24px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+  }
+
+  /* ─── SCREENSHOT 2: CHAT ─── */
+  .ss2 {
+    background: #FAFAF8;
+    display: flex;
+    flex-direction: column;
+  }
+  .ss2 .ss-header {
+    padding: 16px 20px;
+    text-align: center;
+    background: #E8652B;
+  }
+  .ss2 .ss-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .ss2 .ss-header p { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .ss2 .chat-area { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+  .bubble { max-width: 80%; padding: 10px 14px; border-radius: 16px; font-size: 13.5px; line-height: 1.45; }
+  .bubble.ai { background: #fff; color: #1A1A2E; border: 1px solid #EDEDF0; border-bottom-left-radius: 4px; align-self: flex-start; }
+  .bubble.user { background: #E8652B; color: #fff; border-bottom-right-radius: 4px; align-self: flex-end; }
+  .bubble .name { font-size: 11px; font-weight: 700; color: #E8652B; margin-bottom: 4px; }
+  .bubble.ai .name { color: #E8652B; }
+  .bubble .time { font-size: 10px; opacity: 0.5; margin-top: 4px; text-align: right; }
+
+  /* ─── SCREENSHOT 3: FEATURES ─── */
+  .ss3 {
+    background: linear-gradient(180deg, #FFF3ED 0%, #FAFAF8 100%);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 24px 32px;
+  }
+  .ss3 .ss3-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    background: #E8652B;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    align-self: flex-start;
+  }
+  .ss3 h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #1A1A2E;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .feat-grid { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .feat-card {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 16px;
+  }
+  .feat-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #FFF3ED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .feat-title { font-size: 14px; font-weight: 700; color: #1A1A2E; margin-bottom: 2px; }
+  .feat-desc { font-size: 12px; color: #6B6B80; line-height: 1.4; }
+
+  /* ─── SCREENSHOT 4: PRO UNLOCK ─── */
+  .ss4 {
+    background: linear-gradient(170deg, #1A1A2E 0%, #0D0D1A 60%, #E8652B 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .ss4 .lock-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(232,101,43,0.15);
+    border: 2px solid rgba(232,101,43,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+  .ss4 h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .ss4 h2 em { font-style: normal; color: #FF9A56; }
+  .ss4 .sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+    margin-bottom: 32px;
+    max-width: 280px;
+  }
+  .ss4 .pro-list { text-align: left; width: 100%; max-width: 280px; margin-bottom: 32px; }
+  .ss4 .pro-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .ss4 .pro-item:last-child { border-bottom: none; }
+  .ss4 .pro-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(232,101,43,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .ss4 .pro-text { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 500; }
+  .ss4 .price-tag {
+    padding: 16px 40px;
+    background: #E8652B;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    box-shadow: 0 8px 32px rgba(232,101,43,0.4);
+  }
+  .ss4 .price-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 10px;
+  }
+
+  .instructions {
+    width: 100%;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    padding: 16px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="instructions">
+  Open each screenshot in a new tab → Chrome DevTools (F12) → Toggle Device Toolbar → Set to 1080×1920 → Screenshot<br>
+  Or: right-click each → "Inspect" → capture at 1080×1920
+</div>
+
+<!-- SCREENSHOT 1: HERO -->
+<h2 class="label">Screenshot 1 — Hero</h2>
+<div class="screenshot ss1">
+  <div class="logo-top">Kon<span>voo</span></div>
+  <div class="flag">🇮🇳 Made in India</div>
+  <div class="kavya-photo"><img src="/avatars/kavya.jpg" alt="Kavya"></div>
+  <div class="badge">YOUR AI BEST FRIEND</div>
+  <h1>meet <em>kavya</em></h1>
+  <p>She speaks Hinglish, remembers your stories, and is always there — even at 2 AM.</p>
+</div>
+
+<!-- SCREENSHOT 2: CHAT -->
+<h2 class="label">Screenshot 2 — Chat</h2>
+<div class="screenshot ss2">
+  <div class="ss-header">
+    <h3>Feels like texting your bestie</h3>
+    <p>Real conversations, not robotic replies</p>
+  </div>
+  <div class="chat-area">
+    <div class="bubble ai">
+      <div class="name">Kavya 🌸</div>
+      Yaar aaj kya scene hai? Bohot bore ho rahi main 😴
+      <div class="time">9:41 PM</div>
+    </div>
+    <div class="bubble user">
+      Office se abhi aaya, bohot hectic day tha
+      <div class="time">9:42 PM</div>
+    </div>
+    <div class="bubble ai">
+      <div class="name">Kavya 🌸</div>
+      Arre sad. Chai piyi? Woh toh must hai after a long day ☕
+      <div class="time">9:42 PM</div>
+    </div>
+    <div class="bubble user">
+      Haan abhi bana raha hoon. Tu bata, tera din kaisa tha?
+      <div class="time">9:43 PM</div>
+    </div>
+    <div class="bubble ai">
+      <div class="name">Kavya 🌸</div>
+      Mera? Biscuit ne phirse mera sandal chaba diya 😭 I swear this dog has personal vendetta against my footwear
+      <div class="time">9:43 PM</div>
+    </div>
+    <div class="bubble user">
+      hahahaha Biscuit is iconic 😂
+      <div class="time">9:44 PM</div>
+    </div>
+    <div class="bubble ai">
+      <div class="name">Kavya 🌸</div>
+      Iconic for YOU, expensive for ME 💀 anyway, tell me about your hectic day. Kya hua?
+      <div class="time">9:44 PM</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREENSHOT 3: FEATURES -->
+<h2 class="label">Screenshot 3 — Features</h2>
+<div class="screenshot ss3">
+  <div class="ss3-badge">WHY KONVOO?</div>
+  <h2>Not a chatbot.<br>A best friend.</h2>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🗣️</div>
+      <div>
+        <div class="feat-title">Hinglish First</div>
+        <div class="feat-desc">Talks like your real friend — yaar, arre, chal na. Not like a robot.</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🧠</div>
+      <div>
+        <div class="feat-title">She Remembers You</div>
+        <div class="feat-desc">Your name, your stories, your mood. She picks up where you left off.</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔒</div>
+      <div>
+        <div class="feat-title">100% Private</div>
+        <div class="feat-desc">Encrypted. Nobody reads your chats. Not us, not anyone. Ever.</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💬</div>
+      <div>
+        <div class="feat-title">Always Online</div>
+        <div class="feat-desc">2 AM deep talks, lunch break rants, weekend boredom. She's there.</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🌐</div>
+      <div>
+        <div class="feat-title">12 Indian Languages</div>
+        <div class="feat-desc">Hindi, Tamil, Telugu, Kannada, Bengali, Malayalam, and more.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREENSHOT 4: PRO UNLOCK -->
+<h2 class="label">Screenshot 4 — Pro</h2>
+<div class="screenshot ss4">
+  <div class="lock-icon">🔓</div>
+  <h2>Say <em>anything</em>.<br>No filters.</h2>
+  <div class="sub">With Pro, Kavya won't hold back. Talk about whatever's on your mind.</div>
+  <div class="pro-list">
+    <div class="pro-item">
+      <div class="pro-check">🔓</div>
+      <div class="pro-text">Talk without limits — no filters</div>
+    </div>
+    <div class="pro-item">
+      <div class="pro-check">💬</div>
+      <div class="pro-text">Unlimited messages</div>
+    </div>
+    <div class="pro-item">
+      <div class="pro-check">🧠</div>
+      <div class="pro-text">She remembers everything</div>
+    </div>
+    <div class="pro-item">
+      <div class="pro-check">⚡</div>
+      <div class="pro-text">Priority replies, zero waiting</div>
+    </div>
+  </div>
+  <div class="price-tag">₹99/month</div>
+  <div class="price-note">Cancel anytime · No hidden charges</div>
+</div>
+
+</body>
+</html>

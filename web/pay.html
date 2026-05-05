@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Konvoo Pro — Complete Payment</title>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #FAFAF8; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; color: #1A1A2E; }
+  .card { background: #fff; border-radius: 20px; padding: 32px 24px; max-width: 360px; width: 100%; text-align: center; box-shadow: 0 8px 40px rgba(0,0,0,0.06); border: 1px solid #EDEDF0; }
+  .avatar { width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 16px; border: 3px solid rgba(232,101,43,0.15); overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  h1 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .sub { font-size: 14px; color: #6B6B80; margin-bottom: 24px; }
+  .price { font-size: 36px; font-weight: 900; color: #E8652B; margin-bottom: 4px; }
+  .price-note { font-size: 13px; color: #6B6B80; margin-bottom: 24px; }
+  .pay-btn { width: 100%; padding: 16px; background: #E8652B; color: #fff; border: none; border-radius: 14px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: inherit; }
+  .pay-btn:active { transform: scale(0.97); }
+  .pay-btn:disabled { background: #ccc; }
+  .secure { font-size: 11px; color: #9D9DAF; margin-top: 12px; }
+  .error { color: #EF4444; font-size: 13px; margin-top: 12px; display: none; }
+  .success { text-align: center; }
+  .success h2 { font-size: 24px; margin: 16px 0 8px; }
+  .success p { font-size: 14px; color: #6B6B80; }
+  .back-link { display: inline-block; margin-top: 20px; padding: 12px 24px; background: #E8652B; color: #fff; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="card" id="pay-card">
+  <div class="avatar"><img src="/avatars/kavya.jpg" alt="Kavya"></div>
+  <h1>Konvoo Pro</h1>
+  <div class="sub">Unlimited chats with Kavya</div>
+  <div class="price">₹99</div>
+  <div class="price-note">per month · cancel anytime</div>
+  <button class="pay-btn" id="pay-btn" onclick="openCheckout()">Pay ₹99 — Subscribe</button>
+  <div class="secure">🔒 Secured by Razorpay</div>
+  <div class="error" id="error-msg"></div>
+</div>
+
+<div class="card success" id="success-card" style="display:none">
+  <div style="font-size:48px;margin-bottom:8px">🎉</div>
+  <h2>You're Pro now!</h2>
+  <p>Go back to Telegram and keep chatting with Kavya — unlimited!</p>
+  <a class="back-link" href="https://t.me/kavyakonvoobot">Back to Kavya →</a>
+</div>
+
+<script>
+var params = new URLSearchParams(window.location.search);
+var subId = params.get('sub_id');
+var phone = params.get('phone') || '';
+var name = params.get('name') || '';
+var email = params.get('email') || '';
+var key = params.get('key') || '';
+
+if (!subId || !key) {
+  document.getElementById('error-msg').textContent = 'Invalid payment link. Please try again from Telegram.';
+  document.getElementById('error-msg').style.display = 'block';
+  document.getElementById('pay-btn').disabled = true;
+}
+
+function openCheckout() {
+  var btn = document.getElementById('pay-btn');
+  btn.disabled = true;
+  btn.textContent = 'Opening...';
+
+  try {
+    var rzp = new Razorpay({
+      key: key,
+      subscription_id: subId,
+      name: 'Konvoo',
+      description: 'Konvoo Pro — ₹99/month',
+      image: '/avatars/kavya.jpg',
+      prefill: {
+        name: name,
+        email: email,
+        contact: phone
+      },
+      theme: { color: '#E8652B' },
+      handler: function(response) {
+        document.getElementById('pay-card').style.display = 'none';
+        document.getElementById('success-card').style.display = 'block';
+      },
+      modal: {
+        ondismiss: function() {
+          btn.disabled = false;
+          btn.textContent = 'Pay ₹99 — Subscribe';
+        }
+      }
+    });
+    rzp.open();
+  } catch (e) {
+    document.getElementById('error-msg').textContent = 'Payment failed. Please try again.';
+    document.getElementById('error-msg').style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Pay ₹99 — Subscribe';
+  }
+}
+
+// Auto-open checkout on page load (skip the intermediate screen)
+if (subId && key) {
+  setTimeout(openCheckout, 500);
+}
+</script>
+</body>
+</html>

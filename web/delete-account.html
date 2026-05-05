@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Delete Account | Konvoo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #FAFAF8; color: #1A1A2E; min-height: 100vh; }
+
+  .header { padding: 16px 24px; border-bottom: 1px solid #EDEDF0; display: flex; align-items: center; gap: 12px; }
+  .header a { text-decoration: none; color: #1A1A2E; }
+  .logo { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; }
+  .logo span { color: #E8652B; }
+
+  .container { max-width: 480px; margin: 0 auto; padding: 40px 24px 60px; }
+
+  h1 { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+
+  .desc { font-size: 15px; color: #6B6B80; line-height: 1.6; margin-bottom: 32px; }
+
+  .warning { background: #FFF3ED; border: 1px solid rgba(232,101,43,0.2); border-radius: 12px; padding: 16px; margin-bottom: 28px; }
+  .warning-title { font-size: 14px; font-weight: 700; color: #E8652B; margin-bottom: 6px; }
+  .warning-text { font-size: 13px; color: #6B6B80; line-height: 1.5; }
+
+  .form-group { margin-bottom: 20px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: #6B6B80; margin-bottom: 8px; }
+  input { width: 100%; padding: 14px 16px; border: 1.5px solid #EDEDF0; border-radius: 12px; font-size: 15px; font-family: 'DM Sans', sans-serif; color: #1A1A2E; background: #fff; outline: none; transition: border 0.2s; }
+  input:focus { border-color: #E8652B; }
+  input::placeholder { color: #9D9DAF; }
+
+  .btn { width: 100%; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.2s; }
+  .btn:active { transform: scale(0.98); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-primary { background: #E8652B; color: #fff; }
+  .btn-danger { background: #EF4444; color: #fff; }
+  .btn-outline { background: none; border: 1.5px solid #EDEDF0; color: #6B6B80; }
+
+  .otp-row { display: flex; gap: 10px; margin-bottom: 20px; }
+  .otp-row input { flex: 1; }
+  .otp-row .btn { flex: 0 0 auto; width: auto; padding: 14px 20px; }
+
+  .step { display: none; }
+  .step.active { display: block; }
+
+  .success-card { text-align: center; padding: 40px 20px; }
+  .success-card .icon { font-size: 48px; margin-bottom: 16px; }
+  .success-card h2 { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .success-card p { font-size: 14px; color: #6B6B80; line-height: 1.6; margin-bottom: 24px; }
+
+  .error { color: #EF4444; font-size: 13px; margin-top: 8px; display: none; }
+
+  .help { text-align: center; margin-top: 32px; font-size: 13px; color: #6B6B80; }
+  .help a { color: #E8652B; text-decoration: none; font-weight: 600; }
+
+  .footer { text-align: center; padding: 24px; font-size: 12px; color: #9D9DAF; border-top: 1px solid #EDEDF0; margin-top: 40px; }
+  .footer a { color: #6B6B80; text-decoration: none; margin: 0 8px; }
+
+  .data-list { margin: 16px 0; }
+  .data-list li { font-size: 13px; color: #6B6B80; padding: 6px 0; line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="https://konvoo.live"><div class="logo">Kon<span>voo</span></div></a>
+</div>
+
+<div class="container">
+  <!-- STEP 1: Phone Number -->
+  <div class="step active" id="step-phone">
+    <h1>Delete Account</h1>
+    <p class="desc">As per Google Play policy, we need to verify your identity using the phone number registered with your Konvoo account before proceeding with account deletion.</p>
+
+    <div class="warning">
+      <div class="warning-title">⚠️ This action is permanent</div>
+      <div class="warning-text">Once your account is deleted, you will not be able to recover it. All your data will be permanently removed.</div>
+    </div>
+
+    <div class="warning" style="background:#fff;border-color:#EDEDF0">
+      <div class="warning-title" style="color:#1A1A2E">What gets deleted:</div>
+      <ul class="data-list">
+        <li>Your profile (name, phone number, preferences)</li>
+        <li>All conversations and chat history with Kavya</li>
+        <li>Kavya's memory of you</li>
+        <li>Active subscription (if any — will not be refunded)</li>
+        <li>All analytics and usage data</li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label>Registered phone number</label>
+      <input type="tel" id="phone-input" placeholder="Enter your 10-digit number" maxlength="10" inputmode="numeric">
+      <div class="error" id="phone-error"></div>
+    </div>
+
+    <button class="btn btn-primary" id="send-otp-btn" onclick="sendOtp()">Send OTP</button>
+  </div>
+
+  <!-- STEP 2: OTP Verification -->
+  <div class="step" id="step-otp">
+    <h1>Verify OTP</h1>
+    <p class="desc">We've sent a 6-digit OTP to <strong id="otp-phone-display"></strong>. Enter it below to confirm account deletion.</p>
+
+    <div class="form-group">
+      <label>Enter OTP</label>
+      <div class="otp-row">
+        <input type="tel" id="otp-input" placeholder="6-digit OTP" maxlength="6" inputmode="numeric">
+        <button class="btn btn-outline" onclick="sendOtp()" id="resend-btn">Resend</button>
+      </div>
+      <div class="error" id="otp-error"></div>
+    </div>
+
+    <button class="btn btn-danger" id="delete-btn" onclick="deleteAccount()">Delete My Account</button>
+
+    <div style="margin-top:12px">
+      <button class="btn btn-outline" onclick="goBack()">← Go Back</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Success -->
+  <div class="step" id="step-success">
+    <div class="success-card">
+      <div class="icon">✅</div>
+      <h2>Account Deleted</h2>
+      <p>Your Konvoo account and all associated data have been permanently deleted. Kavya will no longer remember you.</p>
+      <p>If you had an active subscription, it has been cancelled. No further charges will apply.</p>
+      <a href="https://konvoo.live" class="btn btn-outline" style="display:inline-block;width:auto;padding:12px 24px">Back to Home</a>
+    </div>
+  </div>
+
+  <div class="help">
+    Need help? Email us at <a href="mailto:support@konvoo.live">support@konvoo.live</a> and we'll process your request manually.
+  </div>
+</div>
+
+<div class="footer">
+  <div>© 2026 Konvoo. All rights reserved.</div>
+  <div style="margin-top:8px">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Use</a>
+    <a href="/refund">Refund Policy</a>
+  </div>
+</div>
+
+<script>
+var API = 'https://yaari-api.onrender.com/api/v1';
+var storedPhone = '';
+var accessToken = '';
+
+function showStep(step) {
+  document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('step-' + step).classList.add('active');
+}
+
+function showError(id, msg) {
+  var el = document.getElementById(id);
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function hideError(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+async function sendOtp() {
+  hideError('phone-error');
+  var phone = document.getElementById('phone-input').value.trim();
+  if (!/^\d{10}$/.test(phone)) {
+    showError('phone-error', 'Please enter a valid 10-digit phone number');
+    return;
+  }
+
+  storedPhone = '91' + phone;
+  var btn = document.getElementById('send-otp-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    var res = await fetch(API + '/auth/otp/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: storedPhone })
+    });
+    var data = await res.json();
+    if (!res.ok) throw data;
+
+    document.getElementById('otp-phone-display').textContent = '+91 ' + phone;
+    showStep('otp');
+  } catch (e) {
+    showError('phone-error', e.error || 'Failed to send OTP. Please try again.');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Send OTP';
+}
+
+async function deleteAccount() {
+  hideError('otp-error');
+  var otp = document.getElementById('otp-input').value.trim();
+  if (!/^\d{6}$/.test(otp)) {
+    showError('otp-error', 'Please enter a valid 6-digit OTP');
+    return;
+  }
+
+  var btn = document.getElementById('delete-btn');
+  btn.disabled = true;
+  btn.textContent = 'Deleting...';
+
+  try {
+    // Step 1: Verify OTP to get access token
+    var verifyRes = await fetch(API + '/auth/otp/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: storedPhone, otp: otp })
+    });
+    var verifyData = await verifyRes.json();
+    if (!verifyRes.ok) throw verifyData;
+
+    accessToken = verifyData.accessToken;
+
+    // Step 2: Delete account
+    var deleteRes = await fetch(API + '/users/me', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + accessToken
+      }
+    });
+
+    if (!deleteRes.ok) {
+      var deleteData = await deleteRes.json();
+      throw deleteData;
+    }
+
+    showStep('success');
+  } catch (e) {
+    showError('otp-error', e.error || 'Failed to delete account. Please try again or email support@konvoo.live');
+    btn.disabled = false;
+    btn.textContent = 'Delete My Account';
+  }
+}
+
+function goBack() {
+  showStep('phone');
+}
+</script>
+</body>
+</html>

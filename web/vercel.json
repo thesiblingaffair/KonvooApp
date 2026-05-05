@@ -1,0 +1,43 @@
+{
+  "framework": null,
+  "buildCommand": "echo skip",
+  "installCommand": "echo skip",
+  "outputDirectory": ".",
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www.konvoo.live" }], "destination": "https://konvoo.live/:path*", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/child-safety", "destination": "/child-safety.html" },
+    { "source": "/delete-account", "destination": "/delete-account.html" },
+    { "source": "/pay", "destination": "/pay.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/refund", "destination": "/refund.html" },
+    { "source": "/webpushr-sw.js", "destination": "/webpushr-sw.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain" },
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ]
+}

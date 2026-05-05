@@ -1,0 +1,34 @@
+{
+  "name": "yaari",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Yaari — AI Companion Platform for Indian Users",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:backend": "turbo run dev --filter=@yaari/backend",
+    "dev:mobile": "turbo run dev --filter=@yaari/mobile",
+    "build": "turbo run build",
+    "build:backend": "turbo run build --filter=@yaari/backend",
+    "build:shared": "turbo run build --filter=@yaari/shared",
+    "lint": "turbo run lint",
+    "db:generate": "npm run db:generate -w @yaari/backend",
+    "db:migrate": "npm run db:migrate -w @yaari/backend",
+    "db:seed": "npm run db:seed -w @yaari/backend",
+    "docker:up": "docker-compose -f apps/backend/docker-compose.yml up -d",
+    "docker:down": "docker-compose -f apps/backend/docker-compose.yml down",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "test": "turbo run test",
+    "test:backend": "npm run test -w @yaari/backend"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

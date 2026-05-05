@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649588653659",
+    "project_id": "konvoo-app-5509a",
+    "storage_bucket": "konvoo-app-5509a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649588653659:android:4f183e07a1833b970b497e",
+        "android_client_info": {
+          "package_name": "com.konvoo.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnOOqHn0U3AAFmmiayZAYccHN2uGN8LxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
